@@ -27,6 +27,6 @@ object ClassPathResolver {
   def resolveTextDocuments(classpath: Classpath): Seq[TextDocument] = {
     val documents = ListBuffer[TextDocument]()
     Locator(classpath.entries.map(_.toNIO))((_, document) => documents.appendAll(document.documents))
-    documents
+    documents.toSeq
   }
 }
